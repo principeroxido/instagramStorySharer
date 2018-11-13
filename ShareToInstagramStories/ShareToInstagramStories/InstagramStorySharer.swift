@@ -71,7 +71,7 @@ func shareToInstagramStories(backgroundVideo:Data, stickerImage:Data, contentUrl
 func shareToInstagramStories(topColor:UIColor, bottomColor:UIColor, stickerImageName:String, contentUrl:String?) -> NSError? {
     
     if let stickerImage = UIImage.init(named: stickerImageName), let stickerImageData = UIImage.pngData(stickerImage)() {
-        return shareToInstagramStories(topColorHexString: topColor.htmlRGB, bottomColorHexString: bottomColor.htmlRGB, stickerImage: stickerImageData, contentUrl: nil)
+        return shareToInstagramStories(topColorHexString: topColor.hex, bottomColorHexString: bottomColor.hex, stickerImage: stickerImageData, contentUrl: nil)
     } else {
         return parametersError()
     }
@@ -144,6 +144,16 @@ private func configurationError() -> NSError {
 }
 
 // MARK: - Tools
+extension UIView {
+    
+    func asImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
+    }
+}
+
 extension UIColor {
     
     var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
@@ -154,7 +164,7 @@ extension UIColor {
         return (0, 0, 0, 0)
     }
     
-    var htmlRGB: String {
+    var hex: String {
         return String(format: "#%02x%02x%02x", Int(rgba.red * 255), Int(rgba.green * 255), Int(rgba.blue * 255))
     }
 }

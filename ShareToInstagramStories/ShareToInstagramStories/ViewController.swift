@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var testView: UIView!
     
     @IBAction func shareImageAndSticker(_ sender: Any) {
         shareToInstagramStories(backgroundImageName: "backgroundTestImage", stickerImageName: "stickerTestImage", contentUrl: nil)
@@ -20,6 +21,13 @@ class ViewController: UIViewController {
     
     @IBAction func shareColorAndSticker(_ sender: Any) {
         shareToInstagramStories(topColor: UIColor.red, bottomColor: UIColor.green, stickerImageName:"stickerTestImage", contentUrl: nil)
+    }
+    
+    @IBAction func shareImageAndView(_ sender: Any) {
+        
+        if let bg = UIImage(named: "backgroundTestImage") {
+            shareToInstagramStories(backgroundImage:  bg, stickerImage: testView.asImage(), contentUrl: nil)
+        }
     }
 }
 

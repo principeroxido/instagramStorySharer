@@ -12,7 +12,7 @@
 		7EB735C92199A91900BE687C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EB735C72199A91900BE687C /* Main.storyboard */; };
 		7EB735CB2199A91B00BE687C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EB735CA2199A91B00BE687C /* Assets.xcassets */; };
 		7EB735CE2199A91B00BE687C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EB735CC2199A91B00BE687C /* LaunchScreen.storyboard */; };
-		7EB735D62199A96B00BE687C /* InstagramStoriesSharer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB735D52199A96B00BE687C /* InstagramStoriesSharer.swift */; };
+		7EB735D62199A96B00BE687C /* InstagramStorySharer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB735D52199A96B00BE687C /* InstagramStorySharer.swift */; };
 		7EB735D82199DC8200BE687C /* stickerTestImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB735D72199DC8200BE687C /* stickerTestImage.png */; };
 		7EB735DA2199DC8600BE687C /* backgroundTestImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB735D92199DC8500BE687C /* backgroundTestImage.png */; };
 		7EB735DD2199E55600BE687C /* testVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 7EB735DC2199E4F500BE687C /* testVideo.mp4 */; };
@@ -26,7 +26,7 @@
 		7EB735CA2199A91B00BE687C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7EB735CD2199A91B00BE687C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7EB735CF2199A91B00BE687C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7EB735D52199A96B00BE687C /* InstagramStoriesSharer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramStoriesSharer.swift; sourceTree = "<group>"; };
+		7EB735D52199A96B00BE687C /* InstagramStorySharer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramStorySharer.swift; sourceTree = "<group>"; };
 		7EB735D72199DC8200BE687C /* stickerTestImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stickerTestImage.png; sourceTree = "<group>"; };
 		7EB735D92199DC8500BE687C /* backgroundTestImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundTestImage.png; sourceTree = "<group>"; };
 		7EB735DC2199E4F500BE687C /* testVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = testVideo.mp4; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 			children = (
 				7EB735C32199A91900BE687C /* AppDelegate.swift */,
 				7EB735C52199A91900BE687C /* ViewController.swift */,
-				7EB735D52199A96B00BE687C /* InstagramStoriesSharer.swift */,
+				7EB735D52199A96B00BE687C /* InstagramStorySharer.swift */,
 				7EB735C72199A91900BE687C /* Main.storyboard */,
 				7EB735CA2199A91B00BE687C /* Assets.xcassets */,
 				7EB735CC2199A91B00BE687C /* LaunchScreen.storyboard */,
@@ -158,7 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EB735D62199A96B00BE687C /* InstagramStoriesSharer.swift in Sources */,
+				7EB735D62199A96B00BE687C /* InstagramStorySharer.swift in Sources */,
 				7EB735C62199A91900BE687C /* ViewController.swift in Sources */,
 				7EB735C42199A91900BE687C /* AppDelegate.swift in Sources */,
 			);
