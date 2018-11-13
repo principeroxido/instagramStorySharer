@@ -136,14 +136,14 @@ private func share(backgroundImageData:Data?, backgroundVideoData:Data?, sticker
 
 // MARK: - Errors
 private func parametersError() -> NSError {
-    return NSError.init(domain: "instagramStoriesSharer", code: 1, userInfo: nil)
+    return NSError.init(domain: "instagramStoriesSharer", code: 1, userInfo: [NSLocalizedDescriptionKey: "Invalid parameters"])
 }
 
 private func configurationError() -> NSError {
-    return NSError.init(domain: "instagramStoriesSharer", code: 2, userInfo: nil)
+    return NSError.init(domain: "instagramStoriesSharer", code: 2, userInfo: [NSLocalizedDescriptionKey: "Invalid scheme configuration"])
 }
 
-// MARK: - Tools
+// MARK: - Extensions
 extension UIView {
     
     func asImage() -> UIImage {
