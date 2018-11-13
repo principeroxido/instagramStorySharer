@@ -21,38 +21,23 @@ let contentUrlParameter = "com.instagram.sharedSticker.contentURL"
 
 
 // MARK: -  Share backgroundImage and Sticker
-func shareToInstagramStories(backgroundImageName:String, stickerImageName:String, contentUrl:String?) -> NSError? {
+@discardableResult func shareToInstagramStories(backgroundImage:Any, stickerImage:Any, contentUrl:String?) -> NSError? {
     
-    if let backgroundImage = UIImage.init(named: backgroundImageName), let stickerImage = UIImage.init(named: stickerImageName) {
-        return shareToInstagramStories(backgroundImage: backgroundImage, stickerImage: stickerImage, contentUrl: contentUrl)
-    
+    if let backgroundImageData = obtainImageData(backgroundImage), let stickerImageData = obtainImageData(stickerImage) {
+        return share(backgroundImageData: backgroundImageData, backgroundVideoData:nil, stickerImageData: stickerImageData, backgroundTopColor:nil, backgroundBottomColor:nil, contentUrl: contentUrl)
     } else {
         return parametersError()
     }
-}
-
-func shareToInstagramStories(backgroundImage:UIImage, stickerImage:UIImage, contentUrl:String?) -> NSError? {
-    
-    if let backgroundImageData = UIImage.pngData(backgroundImage)(), let stickerImageData = UIImage.pngData(stickerImage)() {
-        return shareToInstagramStories(backgroundImageData: backgroundImageData, stickerImageData: stickerImageData, contentUrl: contentUrl)
-    } else {
-        return parametersError()
-    }
-}
-
-func shareToInstagramStories(backgroundImageData:Data, stickerImageData:Data, contentUrl:String?) -> NSError? {
-    
-    return share(backgroundImageData: backgroundImageData, backgroundVideoData:nil, stickerImageData: stickerImageData, backgroundTopColor:nil, backgroundBottomColor:nil, contentUrl: contentUrl)
 }
 
 // MARK: -  Share backgroundVideo and Sticker
-func shareToInstagramStories(backgroundVideoName:String, stickerImageName:String, contentUrl:String?) -> NSError? {
+@discardableResult func shareToInstagramStories(backgroundVideoName:String, backgroundVideoExtension:String, stickerImage:Any, contentUrl:String?) -> NSError? {
     
-    if let path = Bundle.main.path(forResource: backgroundVideoName, ofType: "mp4"), let stickerImage = UIImage.init(named: stickerImageName), let stickerImageData = UIImage.pngData(stickerImage)() {
+    if let path = Bundle.main.path(forResource: backgroundVideoName, ofType: backgroundVideoExtension), let stickerImageData = obtainImageData(stickerImage) {
         
         do {
             let videoData = try Data(contentsOf: URL.init(fileURLWithPath: path))
-            return shareToInstagramStories(backgroundVideo: videoData, stickerImage: stickerImageData, contentUrl: contentUrl)
+            return share(backgroundImageData: nil, backgroundVideoData: videoData, stickerImageData: stickerImageData, backgroundTopColor:nil, backgroundBottomColor:nil, contentUrl: contentUrl)
             
         } catch {
             return parametersError()
@@ -62,13 +47,8 @@ func shareToInstagramStories(backgroundVideoName:String, stickerImageName:String
     }
 }
 
-func shareToInstagramStories(backgroundVideo:Data, stickerImage:Data, contentUrl:String?) -> NSError? {
-    
-    return share(backgroundImageData: nil, backgroundVideoData: backgroundVideo, stickerImageData: stickerImage, backgroundTopColor:nil, backgroundBottomColor:nil, contentUrl: contentUrl)
-}
-
 // MARK: - Share background colors and sticker
-func shareToInstagramStories(topColor:UIColor, bottomColor:UIColor, stickerImageName:String, contentUrl:String?) -> NSError? {
+@discardableResult func shareToInstagramStories(topColor:UIColor, bottomColor:UIColor, stickerImageName:String, contentUrl:String?) -> NSError? {
     
     if let stickerImage = UIImage.init(named: stickerImageName), let stickerImageData = UIImage.pngData(stickerImage)() {
         return shareToInstagramStories(topColorHexString: topColor.hex, bottomColorHexString: bottomColor.hex, stickerImage: stickerImageData, contentUrl: nil)
@@ -77,11 +57,30 @@ func shareToInstagramStories(topColor:UIColor, bottomColor:UIColor, stickerImage
     }
 }
 
-func shareToInstagramStories(topColorHexString:String, bottomColorHexString:String, stickerImage:Data, contentUrl:String?) -> NSError? {
+@discardableResult func shareToInstagramStories(topColorHexString:String, bottomColorHexString:String, stickerImage:Data, contentUrl:String?) -> NSError? {
     
     return share(backgroundImageData: nil, backgroundVideoData: nil, stickerImageData: stickerImage, backgroundTopColor: topColorHexString, backgroundBottomColor:bottomColorHexString, contentUrl: nil)
 }
 
+// MARK: - Data methods
+private func obtainImageData(_ input:Any) -> Data? {
+    
+    var output = input
+    
+    if let imageName = output as? String {
+        output = UIImage.init(named: imageName) as Any
+    }
+    
+    if let image = output as? UIImage {
+        output = UIImage.pngData(image)() as Any
+    }
+    
+    if let imageData = output as? Data {
+        return imageData
+    }
+    
+    return nil
+}
 
 // MARK: - Sharer
 private func share(backgroundImageData:Data?, backgroundVideoData:Data?, stickerImageData:Data?, backgroundTopColor:String?, backgroundBottomColor:String?, contentUrl:String?) -> NSError? {
@@ -116,7 +115,7 @@ private func share(backgroundImageData:Data?, backgroundVideoData:Data?, sticker
         
         if !parametersDictionary.keys.isEmpty {
             let pasteboardItems = [parametersDictionary]
-            let pasteboardOptions = [UIPasteboard.OptionsKey.expirationDate:NSDate.init(timeIntervalSinceNow: 60)]
+            let pasteboardOptions = [UIPasteboard.OptionsKey.expirationDate:NSDate.init(timeIntervalSinceNow: 60), UIPasteboard.OptionsKey.localOnly: true] as [UIPasteboard.OptionsKey : Any]
             
             UIPasteboard.general.setItems(pasteboardItems, options: pasteboardOptions)
             

@@ -11,12 +11,20 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var testView: UIView!
     
+    func showError(error: NSError) {
+        let alertView = UIAlertController.init(title: nil, message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+        self.present(alertView, animated: true, completion: nil)
+    }
+    
     @IBAction func shareImageAndSticker(_ sender: Any) {
-        shareToInstagramStories(backgroundImageName: "backgroundTestImage", stickerImageName: "stickerTestImage", contentUrl: nil)
+        
+        if let error = shareToInstagramStories(backgroundImage: "backgroundTestImage", stickerImage: "stickerTestImage", contentUrl: nil) {
+            showError(error: error)
+        }
     }
     
     @IBAction func shareVideoAndSticker(_ sender: Any) {
-        shareToInstagramStories(backgroundVideoName: "testVideo", stickerImageName: "stickerTestImage", contentUrl: nil)
+        shareToInstagramStories(backgroundVideoName: "testVideo", backgroundVideoExtension: "mp4", stickerImage: "stickerTestImage", contentUrl: nil)
     }
     
     @IBAction func shareColorAndSticker(_ sender: Any) {
