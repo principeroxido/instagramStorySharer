@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ShareToInstagramStories" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYH-kz-bRQ">
+                                <rect key="frame" x="128" y="328.5" width="119" height="30"/>
+                                <state key="normal" title="Video and sticker"/>
+                                <connections>
+                                    <action selector="shareVideoAndSticker:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OgV-cj-120"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAB-6y-BLJ">
+                                <rect key="frame" x="129" y="382.5" width="117" height="30"/>
+                                <state key="normal" title="Color and sticker"/>
+                                <connections>
+                                    <action selector="shareColorAndSticker:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Id-Ws-Hoc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwq-rP-Xe2">
+                                <rect key="frame" x="126.5" y="274.5" width="122" height="30"/>
+                                <state key="normal" title="Image and sticker"/>
+                                <connections>
+                                    <action selector="shareImageAndSticker:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w2u-bT-h9N"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZYH-kz-bRQ" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="hAZ-RT-GFg"/>
+                            <constraint firstItem="hwq-rP-Xe2" firstAttribute="centerX" secondItem="ZYH-kz-bRQ" secondAttribute="centerX" id="lou-SO-3Ly"/>
+                            <constraint firstItem="ZYH-kz-bRQ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ris-aF-Qam"/>
+                            <constraint firstItem="ZYH-kz-bRQ" firstAttribute="top" secondItem="hwq-rP-Xe2" secondAttribute="bottom" constant="24" id="vHO-bI-stE"/>
+                            <constraint firstItem="zAB-6y-BLJ" firstAttribute="top" secondItem="ZYH-kz-bRQ" secondAttribute="bottom" constant="24" id="vPz-xn-7hw"/>
+                            <constraint firstItem="zAB-6y-BLJ" firstAttribute="centerX" secondItem="ZYH-kz-bRQ" secondAttribute="centerX" id="zdK-00-wGW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
