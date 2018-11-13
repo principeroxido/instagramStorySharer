@@ -1,7 +1,7 @@
 # Instagram Story Sharer
 Instagram Story Sharer contains the code for share image to Instagram Stories.
 
-![alt tag](templateImage)
+![alt tag](templateImage.png)
 
 ## Usage
 
