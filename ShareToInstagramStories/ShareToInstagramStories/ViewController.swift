@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func shareColorAndSticker(_ sender: Any) {
-        shareToInstagramStories(topColor: UIColor.red, bottomColor: UIColor.green, stickerImageName:"stickerTestImage", contentUrl: nil)
+        shareToInstagramStories(topColor: UIColor.red, bottomColor: UIColor.green, stickerImage:"stickerTestImage", contentUrl: nil)
     }
     
     @IBAction func shareImageAndView(_ sender: Any) {

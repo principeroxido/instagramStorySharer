@@ -48,18 +48,23 @@ let contentUrlParameter = "com.instagram.sharedSticker.contentURL"
 }
 
 // MARK: - Share background colors and sticker
-@discardableResult func shareToInstagramStories(topColor:UIColor, bottomColor:UIColor, stickerImageName:String, contentUrl:String?) -> NSError? {
+@discardableResult func shareToInstagramStories(topColor:UIColor, bottomColor:UIColor, stickerImage:Any, contentUrl:String?) -> NSError? {
     
-    if let stickerImage = UIImage.init(named: stickerImageName), let stickerImageData = UIImage.pngData(stickerImage)() {
+    if let stickerImageData = obtainImageData(stickerImage) {
         return shareToInstagramStories(topColorHexString: topColor.hex, bottomColorHexString: bottomColor.hex, stickerImage: stickerImageData, contentUrl: nil)
     } else {
         return parametersError()
     }
 }
 
-@discardableResult func shareToInstagramStories(topColorHexString:String, bottomColorHexString:String, stickerImage:Data, contentUrl:String?) -> NSError? {
+@discardableResult func shareToInstagramStories(topColorHexString:String, bottomColorHexString:String, stickerImage:Any, contentUrl:String?) -> NSError? {
     
-    return share(backgroundImageData: nil, backgroundVideoData: nil, stickerImageData: stickerImage, backgroundTopColor: topColorHexString, backgroundBottomColor:bottomColorHexString, contentUrl: nil)
+    if let stickerImageData = obtainImageData(stickerImage) {
+        return share(backgroundImageData: nil, backgroundVideoData: nil, stickerImageData: stickerImageData, backgroundTopColor: topColorHexString, backgroundBottomColor:bottomColorHexString, contentUrl: nil)
+    } else {
+        return parametersError()
+    }
+    
 }
 
 // MARK: - Data methods

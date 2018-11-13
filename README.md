@@ -6,18 +6,16 @@ Instagram Story Sharer contains the code for share image to Instagram Stories.
 The code contains methods for sharing the following contents:
 + Background image and sticker image
 ```swift
-func shareToInstagramStories(backgroundImageName:String, stickerImageName:String, contentUrl:String?) -> NSError?
-func shareToInstagramStories(backgroundImage:UIImage, stickerImage:UIImage, contentUrl:String?) -> NSError?     
+func shareToInstagramStories(backgroundImage:Any, stickerImage:Any, contentUrl:String?) -> NSError?     
 ```
 + Background video and sticker image
 ```swift
-func shareToInstagramStories(backgroundVideoName:String, stickerImageName:String, contentUrl:String?) -> NSError?
-func shareToInstagramStories(backgroundVideo:Data, stickerImage:Data, contentUrl:String?) -> NSError?     
+func shareToInstagramStories(backgroundVideoName:String, backgroundVideoExtension:String, stickerImage:Any, contentUrl:String?) -> NSError?    
 ```
 + Background gradient and sticker image
 ```swift
-func shareToInstagramStories(topColor:UIColor, bottomColor:UIColor, stickerImageName:String, contentUrl:String?) -> NSError?
-func shareToInstagramStories(topColorHexString:String, bottomColorHexString:String, stickerImage:Data, contentUrl:String?) -> NSError?    
+func shareToInstagramStories(topColor:UIColor, bottomColor:UIColor, stickerImage:Any, contentUrl:String?) -> NSError?
+func shareToInstagramStories(topColorHexString:String, bottomColorHexString:String, stickerImage:Any, contentUrl:String?) -> NSError?    
 ```
 
 ## Tools
