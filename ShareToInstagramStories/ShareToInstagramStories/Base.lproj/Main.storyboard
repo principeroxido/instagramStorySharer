@@ -43,7 +43,6 @@
                                 <rect key="frame" x="99.5" y="366.5" width="176" height="30"/>
                                 <state key="normal" title="Image and view as sticker"/>
                                 <connections>
-                                    <action selector="shareColorAndSticker:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aWl-F9-K2p"/>
                                     <action selector="shareImageAndView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dY4-TR-QOu"/>
                                 </connections>
                             </button>
